@@ -26,7 +26,7 @@ const actions = {
   },
   goset({ commit }) {
     axios
-      .get('https://knvrz.com/v1/fbc/d033e2-112260-0001?sort=time&s=asc&page=1')
+      .get('https://jorjoran-front.netlify.app/.netlify/functions/v1')
       .then((r) => commit('goSempak', r.data));
   },
 };

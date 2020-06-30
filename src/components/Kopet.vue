@@ -25,10 +25,6 @@ export default {
     });
     onMounted(() => {
       console.log('component is mounted!');
-
-      store.dispatch('goset').then(() => {
-        require('consola').info('gosok');
-      });
     });
 
     return {
@@ -44,6 +40,10 @@ export default {
           require('consola').info('makcrot');
         });
         obj.count = 1213;
+
+        store.dispatch('goset').then(() => {
+          require('consola').info('gosok');
+        });
       },
       sempak: computed(() => store.state.sempak),
     };

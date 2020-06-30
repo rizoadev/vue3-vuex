@@ -1,0 +1,13 @@
+{
+  "dependencies": {
+    "lambda-multipart": "^1.0.2",
+    "mongodb": "^3.5.9",
+    "mongodb-client-encryption": "^1.1.0",
+    "netlify-lambda": "^1.6.3"
+  },
+  "scripts": {
+    "serve": "netlify-lambda serve functions",
+    "build": "netlify-lambda build functions",
+    "deploy": "netlify-lambda build functions; netlify deploy --prod"
+  }
+}
