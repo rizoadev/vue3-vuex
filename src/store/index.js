@@ -1,6 +1,6 @@
 /** @format */
 
-import { createStore } from 'vuex';
+import { createStore } from "vuex";
 
 const state = {
   count: 0,
@@ -16,16 +16,16 @@ const mutations = {
 };
 
 const actions = {
-  increment: ({ commit }) => commit('increment'),
-  decrement: ({ commit }) => commit('decrement'),
+  increment: ({ commit }) => commit("increment"),
+  decrement: ({ commit }) => commit("decrement"),
   incrementIfOdd({ commit, state }) {
     if ((state.count + 1) % 2 === 0) {
-      commit('increment');
+      commit("increment");
     }
   },
   incrementAsync({ commit }) {
     return new Promise((resolve, reject) => {
-      commit('increment');
+      commit("increment");
       resolve();
     });
   },
@@ -33,7 +33,7 @@ const actions = {
 
 // getters are functions.
 const getters = {
-  evenOrOdd: (state) => (state.count % 2 === 0 ? 'even' : 'odd'),
+  evenOrOdd: (state) => (state.count % 2 === 0 ? "even" : "odd"),
 };
 
 // A Vuex instance is created by combining the state, mutations, actions,
