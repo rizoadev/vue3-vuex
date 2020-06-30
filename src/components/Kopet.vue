@@ -1,29 +1,51 @@
 <!-- @format -->
 
 <template>
+  kvt: {{ koved }}<br />
+  obj: {{ obj }}<br />
   <div>kpt: {{ count }} - {{ evenOrOdd }}</div>
 
-  <button @click="increment">+</button>
-
-  <button @click="decrement">-</button>
-  <button @click="incrementIfOdd">Increment if odd</button>
-  <button @click="incrementAsync">Increment async</button>
+  <button @click="incrementAsync">
+    Increment async
+  </button>
+  {{ sempak }}
 </template>
 <script>
+import { computed, onMounted, onUpdated, ref, reactive } from 'vue';
 import { useStore } from 'vuex';
-import { computed } from 'vue';
 
 export default {
   setup() {
+    const obj = reactive({ count: 0 });
     const store = useStore();
+    const koved = ref('silid');
+
+    onUpdated(() => {
+      console.log('updated!');
+    });
+    onMounted(() => {
+      console.log('component is mounted!');
+
+      store.dispatch('goset').then(() => {
+        require('consola').info('gosok');
+      });
+    });
 
     return {
+      obj,
+      koved,
       count: computed(() => store.state.count),
       evenOrOdd: computed(() => store.getters.evenOrOdd),
-      increment: () => store.dispatch('increment'),
-      decrement: () => store.dispatch('decrement'),
-      incrementIfOdd: () => store.dispatch('incrementIfOdd'),
-      incrementAsync: () => store.dispatch('incrementAsync'),
+      incrementAsync: () => {
+        // store.commit('goSempak', 'warna warni');
+        koved.value = 'jancuk';
+
+        store.dispatch('incrementAsync').then(() => {
+          require('consola').info('makcrot');
+        });
+        obj.count = 1213;
+      },
+      sempak: computed(() => store.state.sempak),
     };
   },
 };
